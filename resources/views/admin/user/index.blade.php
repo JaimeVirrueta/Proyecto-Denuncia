@@ -44,7 +44,7 @@
 
                     <tbody>
                       <tr>              
-                        <td>Nombres</td>
+                        <td>Nombres y ape</td>
                         <td>Correos</td>
                         <td>Usuario</td>
                         <td>Fecha de Inicio</td>
