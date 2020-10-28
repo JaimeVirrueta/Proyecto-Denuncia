@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\Admin\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,8 +15,14 @@ class UsersController extends Controller
      */
     public function index()
     {
-      return view('admin.user.index');
-    }
+
+        $users = User::paginate();
+
+      return view('admin.user.index',[
+          'users' => $users,
+          
+          ]);
+        }
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +31,11 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.create', [
+            //'row' -> $user
+            
+        ]);
+
     }
 
     /**
@@ -35,7 +46,21 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $row = new User();
+       $row->first_name = $request->firts_name;
+       $row->last_name = $request->last_name;
+       $row->username = $request->username;
+       $row->email = $request->email;
+       $row->password = bcrypt($request->username);
+       
+
+       $row->created_by = 1; //TODO  eliminar este paso por que obtendra el usuario en sesion
+       $row->updated_by = 1; //TODO  eliminar este paso por que obtendra el usuario en sesion
+       $row->save();
+
+        dd($request->all());
+       return redirect()->route('admin.user.show' , $row->id);
+    
     }
 
     /**
@@ -44,9 +69,12 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
+
     {
-        //
+        return view('admin.user.show', [
+            'row' -> $user
+        ]);
     }
 
     /**

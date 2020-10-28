@@ -23,7 +23,7 @@
               <i class="fas fa-times"></i>
               </button>
               
-            <a href="" title="Crear Usuario">
+            <a href="{{ route('admin.user.create') }}" title="Crear Usuario">
               <i class="fas fa-plus"></i>
             </a>
           </div>
@@ -43,32 +43,22 @@
                     </thead>
 
                     <tbody>
+                        @foreach ($users as $user)
+
                       <tr>              
-                        <td>Nombres y ape</td>
-                        <td>Correos</td>
-                        <td>Usuario</td>
-                        <td>Fecha de Inicio</td>
-                        <td>Fecha Fin</td>
+                        <td><a href= "{{ route('admin.user.show' , $user->id) }}">{{ $user->first_name }}</a></td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->username }}</td>
+                        <td>{{ $user->start_date }}</td>
+                        <td>{{ $user->end_date }}</td>
                       </tr>
 
-                      <tr>
-                        <td>Nombres 2</td>
-                        <td>Correos 2</td>
-                        <td>Usuario 2</td>
-                        <td>Fecha de Inicio 2</td>
-                        <td>Fecha Fin 2</td>
-                      </tr>
-
-                      <tr>
-                        <td>Nombres 3</td>
-                        <td>Correos 3</td>
-                        <td>Usuario 3</td>
-                        <td>Fecha de Inicio 3</td>
-                        <td>Fecha Fin 3</td>
-                      </tr>
-                    </tbody>
+                    @endforeach
+                                          </tbody>
                   </table>
                  </div>
+
+                 {{ $users->render() }}
                </div> 
 
         <!-- /.card-body -->
