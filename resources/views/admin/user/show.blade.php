@@ -293,7 +293,7 @@
 
 
                   <div class="tab-pane" id="settings">
-                 {!! Form::open() !!}
+                 {!! Form::open([ 'route' => ['admin.user.update', $row->id], 'method' => 'patch']) !!}
 
                   <div class="row">
                   <div class="col-12 col-md-6">
@@ -301,19 +301,19 @@
 
                </div>
                  <div class="col-12 col-md-6">
-                      {!! Field::text('last_name', $row->first_name,['placeholder' => 'Apellidos']) !!}
+                      {!! Field::text('last_name', $row->last_name,['placeholder' => 'Apellidos']) !!}
 
               </div>
                 <div class="col-12 col-md-6">
-                      {!! Field::email('email', $row->first_name,['required' => true, 'placeholder' => 'Email']) !!}
+                      {!! Field::email('email', $row->email,['required' => true, 'placeholder' => 'Email']) !!}
 
               </div>
                  <div class="col-12 col-md-6">
-                      {!! Field::text('username', $row->first_name,['required' => true, 'placeholder' => 'Usuario']) !!}
+                      {!! Field::text('username', $row->username,['required' => true, 'placeholder' => 'Usuario']) !!}
 
               </div>
                  <div class="col-12 col-md-6">
-                   {!! Field::date('start_date', $row->first_name,['placeholder' => 'Nombres']) !!}
+                   {!! Field::date('start_date', $row->start_date_name,['placeholder' => 'Start Date']) !!}
 
              </div>
             </div>
@@ -324,7 +324,7 @@
         </div>
     </div> 
 </div>  
-          {!!Form::open() !!}
+          {!! Form::close() !!}
 
 
                     
