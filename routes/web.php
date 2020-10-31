@@ -39,6 +39,6 @@ Route::prefix('administracion')->namespace('Admin')->name('admin.')->group(funct
 //usuarios
 //roles
 //permisos (solo lectura)
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
