@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Entities\Admin\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Http\Requests\Admin\StoreUserRequest;
+use App\Http\Requests\Admin\UpdateUserRequest;
+
 
 class UsersController extends Controller
 {
@@ -40,17 +43,13 @@ class UsersController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store (StoreUserRequest $request)
     {
        $row = new User();
-       $row->first_name = $request->firts_name;
-       $row->last_name = $request->last_name;
-       $row->username = $request->username;
-       $row->email = $request->email;
+       $row->fill($request->all());
        $row->password = bcrypt($request->username);
        
 
@@ -58,22 +57,19 @@ class UsersController extends Controller
        $row->updated_by = 1; //TODO  eliminar este paso por que obtendra el usuario en sesion
        $row->save();
 
-        dd($request->all());
-       return redirect()->route('admin.user.show' , $row->id);
+        return redirect()->route('admin.user.show', $row->id);
     
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
-
+    public function show (User $user)
     {
         return view('admin.user.show', [
-            'row' -> $user
+            'row' => $user,
         ]);
     }
 
@@ -95,9 +91,14 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        //
+      
+
+       $user->fill($request->all())->save();  
+       
+       return redirect()->route('admin.user.show', $user->id);
+
     }
 
     /**

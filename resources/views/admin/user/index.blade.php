@@ -8,29 +8,24 @@
 
 @endsection
 
+@section('breadcrumb')
+
+ <li class="breadcrumb-item active"><a href="{{ route('admin.user.index') }}">Usuarios</li>
+
+@endsection
+
 @section('content')
+   @component('component.card')
 
-     <!-- Default box -->
-     <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Lista Usuarios</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fas fa-minus"></i></button>
-
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fas fa-times"></i>
-              </button>
-              
-            <a href="{{ route('admin.user.create') }}" title="Crear Usuario">
+    @slot('title','Lista Usuarios')
+    
+    @slot('action')
+    <a href="{{ route('admin.user.create') }}" title="Crear Usuario">
               <i class="fas fa-plus"></i>
             </a>
-          </div>
-        </div>
+    @endslot
 
-            <div class="card-body">
-                <div class= "table-responsive">
+<div class= "table-responsive">
                 <table class="table">
                 <thead>
                       <tr>                
@@ -59,15 +54,6 @@
                  </div>
 
                  {{ $users->render() }}
-               </div> 
+@endcomponent
 
-        <!-- /.card-body -->
-     <!--  <div class="card-footer">
-
-          Footer
-
-        </div>
-        /.card-footer-->
-</div>
-     
 @endsection

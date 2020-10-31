@@ -16,10 +16,9 @@
           <h3 class="card-title">Crear Usuario</h3>
           </div> 
             <div class="card-body">
-
-    <div class="row">
-        <div class="col-12 col-md-6">
-            {!! Field::text('first_name', ['required' => true, 'placeholder' => 'Nombres']) !!}
+                <div class="row">
+                 <div class="col-12 col-md-6">
+                     {!! Field::text('first_name', ['required' => true, 'placeholder' => 'Nombres']) !!}
 
         </div>
         <div class="col-12 col-md-6">
@@ -39,16 +38,13 @@
 
         </div>
     </div>
-   
  </div>
-     
- </div>
-
+</div>
  <div class="row"> 
         <div class="col-12">
-        <div class="float-right">
-        <a href="{{ route('admin.user.index') }}" class="btn btn-outline-danger">Cancelar</a>
-            <button type="submit" class="ml-2 btn btn-success">Guardar</button>
+            <div class="float-right">
+                <a href="{{ route('admin.user.index') }}" class="btn btn-outline-danger">Cancelar</a>
+                <button type="submit" class="ml-2 btn btn-success">Guardar</button>
         </div>
     </div> 
 

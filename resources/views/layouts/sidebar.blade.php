@@ -85,7 +85,7 @@
 
          <li class="nav-header">ADMINISTRACION</li>
           <li class="nav-item">
-            <a href="../calendar.html" class="nav-link">
+            <a href="{{ route('admin.user.index') }}" class="nav-link {{ isRouteActive('admin.user') }}">
               <i class="nav-icon far fa-user"></i>
               <p>
                 Usuarios

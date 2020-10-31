@@ -4,27 +4,26 @@
 
 @section('icon_title')
 
-    <i class="fa fa-fw fa-user"></i>
+<i class="fa fa-fw fa-user"></i>
 
 @endsection
 
 @section('content')
-<div class="row">
+        <div class="row">
           <div class="col-md-3">
 
             <!-- Profile Image -->
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle"
-                       src="../../dist/img/user4-128x128.jpg"
-                       alt="User profile picture">
+                  <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
                 </div>
 
                 <h3 class="profile-username text-center">{{ $row->first_name.' '.$row->last_name }}</h3>
 
                 <p class="text-muted text-center">{{ $row->username }}</p>
 
+              </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -32,11 +31,11 @@
             <!-- About Me Box -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Sobre mi</h3>
+                <h3 class="card-title">Sobre MI</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <strong><i class="fas fa-book mr-1"></i> Education</strong>
+                <strong><i class="fas fa-book mr-1"></i> Educacion</strong>
 
                 <p class="text-muted">
                   B.S. in Computer Science from the University of Tennessee at Knoxville
@@ -44,13 +43,13 @@
 
                 <hr>
 
-                <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                <strong><i class="fas fa-map-marker-alt mr-1"></i> Ubicacion</strong>
 
                 <p class="text-muted">Malibu, California</p>
 
                 <hr>
 
-                <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+                <strong><i class="fas fa-pencil-alt mr-1"></i> Habilidades</strong>
 
                 <p class="text-muted">
                   <span class="tag tag-danger">UI Design</span>
@@ -62,7 +61,7 @@
 
                 <hr>
 
-                <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+                <strong><i class="far fa-file-alt mr-1"></i> Notas</strong>
 
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
               </div>
@@ -76,8 +75,8 @@
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
                   <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Actividad</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Historial</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Informacion</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Linea de tiempo</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Configuracion</a></li>
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
@@ -180,6 +179,7 @@
                         <!-- /.col -->
                       </div>
                       <!-- /.row -->
+
                       <p>
                         <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
                         <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
@@ -291,43 +291,38 @@
                   </div>
                   <!-- /.tab-pane -->
 
-
                   <div class="tab-pane" id="settings">
-                 {!! Form::open([ 'route' => ['admin.user.update', $row->id], 'method' => 'patch']) !!}
+                    {!! Form::open([ 'route' => ['admin.user.update', $row->id], 'method' => 'patch']) !!}
 
-                  <div class="row">
-                  <div class="col-12 col-md-6">
-                     {!! Field::text('first_name', $row->first_name, ['required' => true, 'placeholder' => 'Nombres']) !!}
-
-               </div>
-                 <div class="col-12 col-md-6">
-                      {!! Field::text('last_name', $row->last_name,['placeholder' => 'Apellidos']) !!}
-
-              </div>
-                <div class="col-12 col-md-6">
-                      {!! Field::email('email', $row->email,['required' => true, 'placeholder' => 'Email']) !!}
-
-              </div>
-                 <div class="col-12 col-md-6">
-                      {!! Field::text('username', $row->username,['required' => true, 'placeholder' => 'Usuario']) !!}
-
-              </div>
-                 <div class="col-12 col-md-6">
-                   {!! Field::date('start_date', $row->start_date_name,['placeholder' => 'Start Date']) !!}
-
-             </div>
-            </div>
-          <div class="row"> 
-        <div class="col-12">
-        <div class="float-right">
-             <button type="submit" class="ml-2 btn btn-success">Guardar</button>
-        </div>
-    </div> 
-</div>  
-          {!! Form::close() !!}
-
-
-                    
+                    <div class="row">
+                      <div class="col-12 col-md-6">
+                        {!! Field::text('first_name', $row->first_name, ['required' => true, 'placeholder' => 'Nombres']) !!}
+      
+                      </div>
+                      <div class="col-12 col-md-6">
+                        {!! Field::text('last_name', $row->last_name,['placeholder' => 'Apellidos']) !!}
+      
+                      </div>
+                      <div class="col-12 col-md-6">
+                        {!! Field::email('email', $row->email,['required' => true, 'placeholder' => 'Email']) !!}
+      
+                      </div>
+                      <div class="col-12 col-md-6">
+                        {!! Field::text('username', $row->username,['required' => true, 'placeholder' => 'Usuario']) !!}
+      
+                      </div>
+                      <div class="col-12 col-md-6">
+                        {!! Field::date('start_date', $row->start_date_name,['placeholder' => 'Start Date']) !!}
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="float-right">
+                          <button type="submit" class="ml-2 btn btn-success">Guardar</button>
+                        </div>
+                      </div>
+                    </div>
+                    <!--{!! Form::close() !!-->
                   </div>
                   <!-- /.tab-pane -->
                 </div>
@@ -343,32 +338,5 @@
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.5
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
-  </footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
-</body>
-</html>
-
- @endsection                 
+  @endsection
