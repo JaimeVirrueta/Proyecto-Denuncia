@@ -46,10 +46,13 @@ class UsersController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store (StoreUserRequest $request)
+    public function store (Request $request)
     {
        $row = new User();
-       $row->fill($request->all());
+        $row->first_name = $request->first_name;
+       $row->last_name = $request->last_name;
+       $row->username = $request->username;
+       $row->email = $request->email;
        $row->password = bcrypt($request->username);
        
 

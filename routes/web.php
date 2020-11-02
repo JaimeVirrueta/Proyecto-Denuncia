@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController')->name('home');
+Route::get('home', 'HomeController')->name('home');
+Route::get('/', 'Auth\loginController@showLoginForm')->name('login');
 
 Auth::routes();
 
@@ -39,6 +40,6 @@ Route::prefix('administracion')->namespace('Admin')->name('admin.')->group(funct
 //usuarios
 //roles
 //permisos (solo lectura)
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
