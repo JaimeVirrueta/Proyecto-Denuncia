@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,10 +13,10 @@
 |
 */
 
-Route::get('/', function () {
-    
-    return view ('test');
-});
+Route::get('home', 'HomeController')->name('home');
+Route::get('/', 'Auth\loginController@showLoginForm')->name('login');
+
+Auth::routes();
 
 
 Route::prefix('administracion')->namespace('Admin')->name('admin.')->group(function(){
@@ -38,3 +40,6 @@ Route::prefix('administracion')->namespace('Admin')->name('admin.')->group(funct
 //usuarios
 //roles
 //permisos (solo lectura)
+
+
+
